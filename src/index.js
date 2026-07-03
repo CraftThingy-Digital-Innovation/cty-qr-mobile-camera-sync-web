@@ -142,3 +142,8 @@ export class QrMobileSync extends EventTarget {
     this.addEventListener(event, (e) => callback(e.detail));
   }
 }
+
+if (typeof window !== 'undefined') {
+  window.QrMobileSync = QrMobileSync;
+}
+

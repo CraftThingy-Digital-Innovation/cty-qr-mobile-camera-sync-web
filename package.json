@@ -29,6 +29,9 @@
   "scripts": {
     "build": "vite build --config vite.config.pc.js && vite build --config vite.config.mobile.js"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {},
   "devDependencies": {
     "vite": "^5.2.0"

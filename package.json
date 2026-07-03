@@ -1,0 +1,36 @@
+{
+  "name": "@craftthingy-digital-innovation/cty-qr-mobile-camera-sync-web",
+  "version": "1.0.0",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CraftThingy-Digital-Innovation/cty-qr-mobile-camera-sync-web.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CraftThingy-Digital-Innovation/cty-qr-mobile-camera-sync-web/issues"
+  },
+  "homepage": "https://github.com/CraftThingy-Digital-Innovation/cty-qr-mobile-camera-sync-web#readme",
+  "main": "./dist/cty-qr-mobile-camera-sync.umd.js",
+  "module": "./dist/cty-qr-mobile-camera-sync.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/cty-qr-mobile-camera-sync.es.js",
+      "require": "./dist/cty-qr-mobile-camera-sync.umd.js"
+    },
+    "./mobile": {
+      "import": "./dist/cty-qr-mobile-camera-sync-mobile.es.js",
+      "require": "./dist/cty-qr-mobile-camera-sync-mobile.umd.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "vite build --config vite.config.pc.js && vite build --config vite.config.mobile.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vite": "^5.2.0"
+  }
+}

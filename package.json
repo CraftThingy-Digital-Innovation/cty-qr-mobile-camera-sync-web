@@ -1,6 +1,7 @@
 {
   "name": "@craftthingy-digital-innovation/cty-qr-mobile-camera-sync-web",
-  "version": "1.0.3",
+  "version": "1.0.4",
+  "license": "SEE LICENSE IN LICENSE",
   "type": "module",
   "repository": {
     "type": "git",

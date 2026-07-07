@@ -138,12 +138,19 @@ export class MobileCameraScanner extends EventTarget {
     const performPing = async () => {
       if (!this.token) return;
       try {
-        await fetch(`${this.pingUrl}/${this.token}`, {
+        const response = await fetch(`${this.pingUrl}/${this.token}`, {
           method: 'GET',
           headers: { 'X-Requested-With': 'XMLHttpRequest' }
         });
+        const result = await response.json();
+        if (result.status === 'success') {
+          this.dispatchEvent(new CustomEvent('ping-success', { detail: { connected: true } }));
+        } else {
+          this.dispatchEvent(new CustomEvent('ping-error', { detail: new Error(result.message || 'Ping failed') }));
+        }
       } catch (err) {
         console.warn("Heartbeat ping failed:", err);
+        this.dispatchEvent(new CustomEvent('ping-error', { detail: err }));
       }
     };
 

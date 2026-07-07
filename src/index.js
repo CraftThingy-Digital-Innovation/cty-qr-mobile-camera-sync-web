@@ -61,7 +61,8 @@ export class QrMobileSync extends EventTarget {
 
           // Single image legacy mode support
           if (result.has_image && result.image_url) {
-            const filename = result.image_url.split('/').pop();
+            const cleanUrl = result.image_url.split('?')[0];
+            const filename = cleanUrl.split('/').pop();
             if (!this.seenImages.has(filename)) {
               this.seenImages.add(filename);
               this.dispatchEvent(new CustomEvent('image', {
@@ -111,7 +112,8 @@ export class QrMobileSync extends EventTarget {
    */
   async clearFile(filename) {
     try {
-      const response = await fetch(`${this.apiUrl}/ocr-phone/clear-file/${filename}`);
+      const cleanFilename = filename.split('?')[0];
+      const response = await fetch(`${this.apiUrl}/ocr-phone/clear-file?filename=${cleanFilename}`);
       return await response.json();
     } catch (err) {
       console.error('Failed to clear file:', err);
